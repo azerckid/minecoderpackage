@@ -57,7 +57,7 @@ export default () => (
       name="SignIn"
       component={SigninScreen}
       options={{ headerShown: false }}></Stack.Screen>
-    <Stack.Screen name="SignUp" component={SignupScreen} options={{ headerShown: true }}></Stack.Screen>
+    <Stack.Screen name="SignUp" component={SignupScreen} options={{ headerShown: false}}></Stack.Screen>
     <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: true, headerRight:()=>(
       <View style={{flexDirection:"row",justifyContent:"flex-end", alignItems:"center"}}>
         <TouchableOpacity 

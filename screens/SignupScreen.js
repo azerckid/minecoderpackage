@@ -4,6 +4,8 @@ import { Input, Text } from "react-native-elements";
 import firebase from "../firebase/fire";
 import ScrollContainer from "../components/ScrollContainer"
 import {Picker} from '@react-native-picker/picker';
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Keyboard } from "react-native";
 
 
 const SignupScreen = ({ navigation }) => {
@@ -33,6 +35,9 @@ const SignupScreen = ({ navigation }) => {
 
   return (
     <ScrollContainer >
+      <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+        <Text style={{ marginTop: 20 }}>Already have an account? Sign In</Text>
+      </TouchableOpacity>
       <Text>국가</Text>
       <View style={styles.pickerBoxContainer}>
         <View style={styles.pickerBoxInner}>
@@ -163,26 +168,31 @@ const SignupScreen = ({ navigation }) => {
       <Text>
         개인정보 활용 동의서를 확인하셔야 동의가 가능합니다.
       </Text>
- 
-      <TextInput
-        multiline={true}
-        numberOfLines={20}
-        scrollEnabled={true}
-        style={{
-          height:88, 
-          borderWidth: 1,
-          borderColor: "#DEDEDE",
-          borderRadius: 5
-        }}
-        >
-        dkfejrljwe;rlkajs;dlfkjas;lfkja;sldkfjasdlkfjawe;
-        lfja;slkdfja;lsdfja;sdlkfjawe;lfkja;lsdkfja;lsdfk
-        ja;sldfja;lsdkfja;lsdkfja;lsdfja;sldkfja;sldkfja;
-        sdlfkjawe;ofijwe;oija;ljfa;lekjaSDasdaSDasdADadsaD
-        asdaDSasdasDadaDadaDafsdgehrnthmyuk675yhr5bq4vq34vqer
-        asdvvq4trq34cq34tq34tcqwtq43tvq3b5ynu65u56u56uw5bu
-        qwerc243423twegdr
-       </TextInput>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
+        <TextInput
+          showSoftInputOnFocus={false}
+          multiline={true}
+          numberOfLines={20}
+          scrollEnabled={true}
+          secureTextEntry
+          style={{
+            height:88, 
+            borderWidth: 1,
+            borderColor: "#DEDEDE",
+            borderRadius: 5,
+            textAlignVertical: 'top',
+            
+          }}
+          >
+          dkfejrljwe;rlkajs;dlfkjas;lfkja;sldkfjasdlkfjawe;
+          lfja;slkdfja;lsdfja;sdlkfjawe;lfkja;lsdkfja;lsdfk
+          ja;sldfja;lsdkfja;lsdkfja;lsdfja;sldkfja;sldkfja;
+          sdlfkjawe;ofijwe;oija;ljfa;lekjaSDasdaSDasdADadsaD
+          asdaDSasdasDadaDadaDafsdgehrnthmyuk675yhr5bq4vq34vqer
+          asdvvq4trq34cq34tq34tcqwtq43tvq3b5ynu65u56u56uw5bu
+          qwerc243423twegdr
+        </TextInput>
+       </TouchableWithoutFeedback>
       <View style={styles.container}>
         <View style={styles.checkboxContainer}>
           <CheckBox
@@ -200,25 +210,32 @@ const SignupScreen = ({ navigation }) => {
       <Text>
        업무 수행 수칙 서약서를 확인하셔야 동의가 가능합니다.
       </Text> 
-      <Text
-        multiline={true}
-        numberOfLines={20}
-        scrollEnabled={true}
-        style={{
-          height:88, 
-          borderWidth: 1,
-          borderColor: "#DEDEDE",
-          borderRadius: 5
-        }}
-        >
-        dkfejrljwe;rlkajs;dlfkjas;lfkja;sldkfjasdlkfjawe;
-        lfja;slkdfja;lsdfja;sdlkfjawe;lfkja;lsdkfja;lsdfk
-        ja;sldfja;lsdkfja;lsdkfja;lsdfja;sldkfja;sldkfja;
-        sdlfkjawe;ofijwe;oija;ljfa;lekjaSDasdaSDasdADadsaD
-        asdaDSasdasDadaDadaDafsdgehrnthmyuk675yhr5bq4vq34vqer
-        asdvvq4trq34cq34tq34tcqwtq43tvq3b5ynu65u56u56uw5bu
-        qwerc243423twegdr
-       </Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
+        <TextInput
+          showSoftInputOnFocus={false}
+          multiline={true}
+          numberOfLines={20}
+          scrollEnabled={true}
+          secureTextEntry
+          style={{
+            height:88, 
+            borderWidth: 1,
+            borderColor: "#DEDEDE",
+            borderRadius: 5,
+            textAlignVertical: 'top',
+            
+          }}
+          >
+          dkfejrljwe;rlkajs;dlfkjas;lfkja;sldkfjasdlkfjawe;
+          lfja;slkdfja;lsdfja;sdlkfjawe;lfkja;lsdkfja;lsdfk
+          ja;sldfja;lsdkfja;lsdkfja;lsdfja;sldkfja;sldkfja;
+          sdlfkjawe;ofijwe;oija;ljfa;lekjaSDasdaSDasdADadsaD
+          asdaDSasdasDadaDadaDafsdgehrnthmyuk675yhr5bq4vq34vqer
+          asdvvq4trq34cq34tq34tcqwtq43tvq3b5ynu65u56u56uw5bu
+          qwerc243423twegdr
+        </TextInput>
+      </TouchableWithoutFeedback>
+      
       <View style={styles.container}>
         <View style={styles.checkboxContainer}>
           <CheckBox
@@ -234,9 +251,7 @@ const SignupScreen = ({ navigation }) => {
       <TouchableOpacity onPress={() => signUp()}>
         <Text style={styles.button}>Sign Up</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
-        <Text style={{ marginTop: 20 }}>Already have an account? Sign In</Text>
-      </TouchableOpacity>
+      
     </ScrollContainer>
   );
 };

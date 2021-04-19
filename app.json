@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "fire-mapp",
-    "slug": "fire-mapp",
+    "name": "minecoderapp",
+    "slug": "minecoderapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,7 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.zizimoos.firemapp"
+      "package": "com.zizimoos.minecoderapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
