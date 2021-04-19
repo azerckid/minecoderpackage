@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View,TextInput, StyleSheet, TouchableOpacity,Icon } from "react-native";
+import { View,TextInput, StyleSheet, TouchableOpacity,Icon, ScrollView,CheckBox, Textarea } from "react-native";
 import { Input, Text } from "react-native-elements";
 import firebase from "../firebase/fire";
 import ScrollContainer from "../components/ScrollContainer"
@@ -15,6 +15,7 @@ const SignupScreen = ({ navigation }) => {
   const [sponsor, setSponsor] = useState("");
   const [error, setError] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState();
+  const [isSelected, setSelection] = useState(false);
 
   const signUp = async () => {
     try {
@@ -68,6 +69,7 @@ const SignupScreen = ({ navigation }) => {
         label="성함"
         value={name}
         placeholder="성함을 입력해 주세요."
+        placeholderStyle={{fontSize: 12}}
         onChangeText={setEmail}
         style={{
           // backgroundColor: "#e3e3e3",
@@ -155,6 +157,78 @@ const SignupScreen = ({ navigation }) => {
           fontSize:12,
         }}
       />
+      <Text>
+        개인정보 활용 동의서
+      </Text>
+      <Text>
+        개인정보 활용 동의서를 확인하셔야 동의가 가능합니다.
+      </Text>
+ 
+      <TextInput
+        multiline={true}
+        numberOfLines={20}
+        scrollEnabled={true}
+        style={{
+          height:88, 
+          borderWidth: 1,
+          borderColor: "#DEDEDE",
+          borderRadius: 5
+        }}
+        >
+        dkfejrljwe;rlkajs;dlfkjas;lfkja;sldkfjasdlkfjawe;
+        lfja;slkdfja;lsdfja;sdlkfjawe;lfkja;lsdkfja;lsdfk
+        ja;sldfja;lsdkfja;lsdkfja;lsdfja;sldkfja;sldkfja;
+        sdlfkjawe;ofijwe;oija;ljfa;lekjaSDasdaSDasdADadsaD
+        asdaDSasdasDadaDadaDafsdgehrnthmyuk675yhr5bq4vq34vqer
+        asdvvq4trq34cq34tq34tcqwtq43tvq3b5ynu65u56u56uw5bu
+        qwerc243423twegdr
+       </TextInput>
+      <View style={styles.container}>
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            value={isSelected}
+            onValueChange={setSelection}
+            style={styles.checkbox}
+          />
+          <Text style={styles.label}>개인정보 활용 동의서를 확인했으며, 이에 동의합니다.</Text>
+        </View>
+      </View>
+
+      <Text>
+        업무 수행 수칙 서약서
+      </Text>
+      <Text>
+       업무 수행 수칙 서약서를 확인하셔야 동의가 가능합니다.
+      </Text> 
+      <Text
+        multiline={true}
+        numberOfLines={20}
+        scrollEnabled={true}
+        style={{
+          height:88, 
+          borderWidth: 1,
+          borderColor: "#DEDEDE",
+          borderRadius: 5
+        }}
+        >
+        dkfejrljwe;rlkajs;dlfkjas;lfkja;sldkfjasdlkfjawe;
+        lfja;slkdfja;lsdfja;sdlkfjawe;lfkja;lsdkfja;lsdfk
+        ja;sldfja;lsdkfja;lsdkfja;lsdfja;sldkfja;sldkfja;
+        sdlfkjawe;ofijwe;oija;ljfa;lekjaSDasdaSDasdADadsaD
+        asdaDSasdasDadaDadaDafsdgehrnthmyuk675yhr5bq4vq34vqer
+        asdvvq4trq34cq34tq34tcqwtq43tvq3b5ynu65u56u56uw5bu
+        qwerc243423twegdr
+       </Text>
+      <View style={styles.container}>
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            value={isSelected}
+            onValueChange={setSelection}
+            style={styles.checkbox}
+          />
+          <Text style={styles.label}>서약서 내용을 확인했으며, 이에 동의합니다.</Text>
+        </View>
+      </View>  
       {error ? <Text style={{ color: "red" }}>{error}</Text> : null}
 
       <TouchableOpacity onPress={() => signUp()}>
@@ -233,6 +307,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     height: 37,
+  },
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  checkbox: {
+    alignSelf: "center",
+  },
+  label: {
+    margin: 8,
   },
 });
 
