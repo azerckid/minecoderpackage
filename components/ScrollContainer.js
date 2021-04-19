@@ -18,7 +18,10 @@ const ScrollContainer = ({
     <ScrollView
       vertical
       style={{
-        backgroundColor: "black",
+        backgroundColor: "white",
+        marginTop: 0,
+        paddingHorizontal: 10,
+        
       }}
       refreshControl={
         <RefreshControl
