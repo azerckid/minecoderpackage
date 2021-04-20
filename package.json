@@ -26,6 +26,7 @@
     "expo-asset": "~8.2.1",
     "expo-barcode-scanner": "~9.1.0",
     "expo-camera": "~9.1.0",
+    "expo-checkbox": "~1.0.0",
     "expo-device": "~2.4.0",
     "expo-font": "~8.4.0",
     "expo-network": "~2.4.0",

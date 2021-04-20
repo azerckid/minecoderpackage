@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { TouchableOpacity, StyleSheet, View, Image } from "react-native";
+import { TouchableOpacity, StyleSheet, View, Image, TextInput } from "react-native";
 import { Input, Text } from "react-native-elements";
 import CryptoJS from "crypto-js";
 import * as Network from "expo-network";
 import * as Device from 'expo-device';
 import fetch from "node-fetch";
+import Checkbox from 'expo-checkbox';
+
 
 const SigninScreen = ({ navigation }) => {
   const [email, setEmail] = useState("vericras@kakao.com");
   const [password, setPassword] = useState("!1q2w3e4r");
   const [error, setError] = useState("");
+  const [isSelected, setSelection] = useState(false);
 
   // encription
   var encrypted = CryptoJS.AES.encrypt(
@@ -114,43 +117,73 @@ const SigninScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.logo} source={require("../assets/ddmcoin.png")} />
-      <Input
-        // label="Email"
-        value={email}
-        placeholder="email"
-        onChangeText={setEmail}
-        // inputContainerStyle={{ borderBottomWidth: 0 }}
-        style={{
-          // backgroundColor: "#e3e3e3",
-          // borderRadius: 30,
-          paddingLeft: 10,
-        }}
-      />
-      <Input
+      {/* <Image style={styles.logo} source={require("../assets/ddmcoin.png")} /> */}
+      
+        <TextInput
+          // label="Email"
+          value={email}
+          placeholder="아이디 또는 이메일"
+          onChangeText={setEmail}
+          // inputContainerStyle={{ borderBottomWidth: 0 }}
+          style={{
+            width: 320,
+            backgroundColor:"#f8f8f8",
+            height: 56,
+            borderRadius: 6,
+            borderColor:"#eeeeee",
+            paddingLeft: 10,
+            marginBottom: 10
+            
+          }}
+        />
+     
+
+      <TextInput
         // label="Password"
         value={password}
         placeholder="password"
         onChangeText={setPassword}
         style={{
-          // backgroundColor: "#e3e3e3",
-          // borderRadius: 30,
+          width: 320,
+          backgroundColor:"#f8f8f8",
+          height: 56,
+          borderRadius: 6,
+          borderColor:"#eeeeee",
           paddingLeft: 10,
         }}
         secureTextEntry
       />
 
+      <View style={styles.checkcontainer}> 
+        <View style={styles.checkboxContainer}>
+          <Checkbox
+            value={isSelected}
+            onValueChange={setSelection}
+            style={styles.checkbox,{color : isSelected ? "#683AC8" : undefined}}
+            color="#683AC8"
+          />
+          <Text style={styles.label}>아이디 저장</Text>
+        </View>
+      </View>  
+
       {error ? <Text style={{ color: "red" }}>{error}</Text> : null}
 
       <TouchableOpacity onPress={() => signIn()}>
-        <Text style={styles.button}>Sign In</Text>
+        <Text style={styles.button}>로그인</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-        <Text style={{ marginTop: 20 }}>Don't have an account? Sign Up</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Search")}>
-        <Text style={{ marginTop: 20 }}>Search</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection:"row"}}>
+        <TouchableOpacity onPress={() => navigation.navigate("Search")}>
+          <Text style={{ marginTop: 20 }}>아이디 찾기 | </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Search")}>
+          <Text style={{ marginTop: 20 }}>비밀번호 찾기 | </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+          <Text style={{ marginTop: 20 }}>회원가입</Text>
+        </TouchableOpacity>
+
+      </View>  
+      
     </View>
   );
 };
@@ -167,11 +200,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 30,
-    width: 300,
-    backgroundColor: "#ff8ac2",
+    borderRadius: 6,
+    width: 320,
+    height: 56,
+    backgroundColor: "#683AC8",
     color: "#ffffff",
     textAlign: "center",
+    textAlignVertical:"center",
     fontSize: 18,
     fontWeight: "bold",
   },
@@ -195,6 +230,22 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     marginBottom: 70,
+  },
+  checkcontainer: {
+    // flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  checkbox: {
+    alignSelf: "center",
+    backgroundColor:"#683AC8"
+  },
+  label: {
+    margin: 8,
   },
 });
 
