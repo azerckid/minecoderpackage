@@ -17,6 +17,8 @@ import Transaction from "../../components/Transaction";
 import AddressCard from "../../components/AddressCard";
 import fetch from "node-fetch";
 import Dount from "../../components/DonutChart"
+import { TextInput } from "react-native-gesture-handler";
+import { LinearGradient } from 'expo-linear-gradient';
 
 const data =[
   {
@@ -95,18 +97,16 @@ export default ({ refreshFn, loading, nowPlaying, navigation }) => {
         <ActivityIndicator />
       ) : (
         <>
-          <SliderContainer>
-            <Swiper loop timeout={3} controlsEnabled={false}>
-              {nowPlaying.map((movie) => (
-                <Slide
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.original_title}            
-                  backgroundImage={movie.backdrop_path}    
-                />
-              ))}
-            </Swiper>
-          </SliderContainer>
+          <View style={styles.headBackcontainer} >
+            <LinearGradient
+              // Background Linear Gradient
+              colors={['#4568DC', 'transparent']}
+              start={[1,0.5]}
+              style={styles.background}
+            />
+            <TextInput>환영합니다.</TextInput>
+            <TextInput>MineCoder 님</TextInput>
+          </View>
           <Container>
             <View
               style={{
@@ -161,6 +161,20 @@ export default ({ refreshFn, loading, nowPlaying, navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  headBackcontainer: {
+    // flex: 1,
+    height: 190,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#B06AB3',
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 300,
+  },
   baseText: {
     fontFamily: "Cochin",
   },

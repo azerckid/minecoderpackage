@@ -115,16 +115,22 @@ const SigninScreen = ({ navigation }) => {
     }
   };
 
-  return (
+  return (<>
     <View style={styles.container}>
-      {/* <Image style={styles.logo} source={require("../assets/ddmcoin.png")} /> */}
-      
+      <View style={{
+        alignItems: "center",
+        justifyContent: "center"
+        }}>
+        <Image style={styles.logo} source={require("../assets/mclogo_2.png")} />
+      </View> 
+      <View style={{
+        alignItems: "center",
+        justifyContent: "center"
+        }}>
         <TextInput
-          // label="Email"
           value={email}
           placeholder="아이디 또는 이메일"
           onChangeText={setEmail}
-          // inputContainerStyle={{ borderBottomWidth: 0 }}
           style={{
             width: 320,
             backgroundColor:"#f8f8f8",
@@ -133,66 +139,68 @@ const SigninScreen = ({ navigation }) => {
             borderColor:"#eeeeee",
             paddingLeft: 10,
             marginBottom: 10
-            
           }}
         />
-     
-
-      <TextInput
-        // label="Password"
-        value={password}
-        placeholder="password"
-        onChangeText={setPassword}
-        style={{
-          width: 320,
-          backgroundColor:"#f8f8f8",
-          height: 56,
-          borderRadius: 6,
-          borderColor:"#eeeeee",
-          paddingLeft: 10,
-        }}
-        secureTextEntry
-      />
-
+        <TextInput
+          // label="Password"
+          value={password}
+          placeholder="password"
+          onChangeText={setPassword}
+          style={{
+            width: 320,
+            backgroundColor:"#f8f8f8",
+            height: 56,
+            borderRadius: 6,
+            borderColor:"#eeeeee",
+            paddingLeft: 10,
+          }}
+          secureTextEntry
+        />
+      </View>    
       <View style={styles.checkcontainer}> 
         <View style={styles.checkboxContainer}>
           <Checkbox
             value={isSelected}
             onValueChange={setSelection}
-            style={styles.checkbox,{color : isSelected ? "#683AC8" : undefined}}
+            style={styles.checkbox, {color : isSelected ? "#683AC8" : "#ECECEC"}}
             color="#683AC8"
           />
           <Text style={styles.label}>아이디 저장</Text>
         </View>
       </View>  
-
       {error ? <Text style={{ color: "red" }}>{error}</Text> : null}
-
-      <TouchableOpacity onPress={() => signIn()}>
-        <Text style={styles.button}>로그인</Text>
-      </TouchableOpacity>
-      <View style={{flexDirection:"row"}}>
+      <View style={{
+        alignItems: "center",
+        justifyContent: "center"
+        }}>
+        <TouchableOpacity onPress={() => signIn()}>
+          <Text style={styles.button}>로그인</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={{
+        flexDirection:"row",
+        alignItems: "center",
+        justifyContent: "center"
+        }}>
         <TouchableOpacity onPress={() => navigation.navigate("Search")}>
-          <Text style={{ marginTop: 20 }}>아이디 찾기 | </Text>
+          <Text style={{ marginTop: 20 }}>아이디 찾기  | </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Search")}>
-          <Text style={{ marginTop: 20 }}>비밀번호 찾기 | </Text>
+          <Text style={{ marginTop: 20 }}> 비밀번호 찾기  | </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-          <Text style={{ marginTop: 20 }}>회원가입</Text>
+          <Text style={{ marginTop: 20 }}> 회원가입</Text>
         </TouchableOpacity>
-
       </View>  
-      
     </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    justifyContent:"center",
     backgroundColor: "#fff",
     paddingHorizontal: 10,
   },
@@ -227,14 +235,15 @@ const styles = StyleSheet.create({
     height: 50,
   },
   logo: {
-    width: 120,
-    height: 120,
+    width: 278,
+    height: 134,
     marginBottom: 70,
+    justifyContent:"center",
+    alignItems:"center"
   },
   checkcontainer: {
     // flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+  
   },
   checkboxContainer: {
     flexDirection: "row",
