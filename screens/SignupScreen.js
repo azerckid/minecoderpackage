@@ -6,6 +6,7 @@ import ScrollContainer from "../components/ScrollContainer"
 import {Picker} from '@react-native-picker/picker';
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { Keyboard } from "react-native";
+import {MaterialIcons} from "@expo/vector-icons"
 
 
 const SignupScreen = ({ navigation }) => {
@@ -34,11 +35,16 @@ const SignupScreen = ({ navigation }) => {
   };
 
   return (
+  <>
+    <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+        <View style={{flexDirection: "row", height: 50, alignItems: "center"}}>
+          <MaterialIcons name="arrow-back-ios" size={24} color="black" />
+          <Text style={{ fontSize:14 }}>회원가입</Text>
+        </View>   
+    </TouchableOpacity>
     <ScrollContainer >
-      <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
-        <Text style={{ marginTop: 20 }}>Already have an account? Sign In</Text>
-      </TouchableOpacity>
-      <Text>국가</Text>
+    <View>
+      <Text style={{marginTop: 10}}>국가</Text>
       <View style={styles.pickerBoxContainer}>
         <View style={styles.pickerBoxInner}>
           <Picker
@@ -54,6 +60,8 @@ const SignupScreen = ({ navigation }) => {
           </Picker>
         </View>
       </View>
+    </View>
+    <View style={{marginBottom: 10}}>
       <Text style={{marginTop: 10}}>지점</Text>
       <View style={styles.pickerBoxContainer}>
         <View style={styles.pickerBoxInner}>
@@ -70,6 +78,8 @@ const SignupScreen = ({ navigation }) => {
           </Picker>
         </View>
       </View>
+    </View>
+
       <Input
         label="성함"
         value={name}
@@ -249,10 +259,10 @@ const SignupScreen = ({ navigation }) => {
       {error ? <Text style={{ color: "red" }}>{error}</Text> : null}
 
       <TouchableOpacity onPress={() => signUp()}>
-        <Text style={styles.button}>Sign Up</Text>
-      </TouchableOpacity>
-      
+        <Text style={styles.button}>회원가입</Text>
+      </TouchableOpacity>  
     </ScrollContainer>
+  </>
   );
 };
 
@@ -272,12 +282,13 @@ const styles = StyleSheet.create({
     borderColor:"#DEDEDE"
   },
   button: {
-    marginTop: 10,
+    marginTop: 20,
+    marginBottom:40,
     paddingVertical: 12,
     paddingHorizontal: 20,
-    borderRadius: 30,
-    width: 300,
-    backgroundColor: "#4d97ff",
+    borderRadius: 6,
+    width: 320,
+    backgroundColor: "#6127DC",
     color: "#ffffff",
     textAlign: "center",
     fontSize: 18,
@@ -294,6 +305,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 14,
     marginBottom: 50,
+    
   },
   tinyLogo: {
     width: 50,
