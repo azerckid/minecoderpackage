@@ -20,8 +20,7 @@ const ScrollContainer = ({
       style={{
         backgroundColor: "white",
         marginTop: 0,
-        paddingHorizontal: 10,
-        
+        // paddingHorizontal: 10,
       }}
       refreshControl={
         <RefreshControl
